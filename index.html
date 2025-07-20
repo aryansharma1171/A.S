@@ -28,7 +28,7 @@
             transform: scale(1.1);
         }
 
-        /* Glassmorphism Effect (Frosted Glass) */
+        /* Glassmorphism Effect */
         .section {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
@@ -115,17 +115,11 @@
             animation: float 2s infinite alternate ease-in-out;
         }
 
-        /* Floating Animation */
         @keyframes float {
-            from {
-                transform: translateY(0px);
-            }
-            to {
-                transform: translateY(12px);
-            }
+            from { transform: translateY(0px); }
+            to { transform: translateY(12px); }
         }
 
-        /* Hide content initially */
         .content {
             opacity: 0;
             transition: opacity 1s ease-in-out;
@@ -184,10 +178,15 @@
                 <a class="btn" href="https://aryansharma1171.github.io/as-list-maker/" target="_blank">Visit A.S List Maker</a>
             </div>
 
-            <!-- New Text to QR Section -->
             <div class="section">
                 <p><strong>Text to QR</strong> - Convert text to QR codes easily</p>
                 <a class="btn" href="https://aryansharma1171.github.io/Text-to-QR-/" target="_blank">Visit Text to QR</a>
+            </div>
+
+            <!-- ✅ NEW: A.S Q.R Scanner Section -->
+            <div class="section">
+                <p><strong>A.S Q.R Scanner</strong> - Scan QR codes directly from your browser</p>
+                <a class="btn" href="https://aryansharma1171.github.io/A.S-Q.R-Scanner/" target="_blank">Visit A.S Q.R Scanner</a>
             </div>
         </div>
 
@@ -204,14 +203,14 @@
     </div>
 
     <script>
-        // Show the welcome message and hide content initially
+        // Show welcome, then reveal content
         setTimeout(function() {
-            document.getElementById("welcomeScreen").style.opacity = "0"; // Fade out welcome screen
+            document.getElementById("welcomeScreen").style.opacity = "0";
             setTimeout(function() {
-                document.getElementById("welcomeScreen").style.display = "none"; // Hide it completely
-                document.getElementById("mainContent").style.opacity = "1"; // Smoothly fade in main content
-            }, 1000); // Delay for fade-out effect
-        }, 2000); // Display welcome message for 2 seconds
+                document.getElementById("welcomeScreen").style.display = "none";
+                document.getElementById("mainContent").style.opacity = "1";
+            }, 1000);
+        }, 2000);
     </script>
 </body>
 </html>
