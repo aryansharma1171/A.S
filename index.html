@@ -3,220 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.S - Free Software</title>
+    <title>A.S | Free Software Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* Dark Futuristic Theme */
-        body {
-            background: radial-gradient(circle, #1e1e2e, #121212);
-            color: #ffffff;
-            font-family: 'Poppins', sans-serif;
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.3);
+            --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* 3D Neon Text */
+        /* --- Header / Hero Section --- */
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: radial-gradient(circle at top, #1e293b 0%, #0f172a 70%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .brand-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
         h1 {
             font-size: 3.5rem;
-            margin: 20px 0;
-            text-shadow: 0px 0px 15px rgba(0, 170, 255, 0.8);
-            transition: transform 0.3s ease-in-out;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        h1:hover {
-            transform: scale(1.1);
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
         }
 
-        /* Glassmorphism Effect */
-        .section {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            box-shadow: 0px 5px 20px rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px auto;
-            max-width: 850px;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-
-        .section:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 8px 30px rgba(0, 170, 255, 0.5);
-        }
-
-        /* Neon Buttons */
-        .btn {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 12px 30px;
-            font-size: 1.3rem;
-            text-decoration: none;
-            color: #ffffff;
-            background: linear-gradient(90deg, #6a11cb, #2575fc);
-            border-radius: 15px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0px 4px 15px rgba(106, 17, 203, 0.5);
-        }
-
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 6px 25px rgba(106, 17, 203, 0.8);
-        }
-
-        /* Contact Section */
-        .contact {
-            margin-top: 50px;
-            font-size: 1.3rem;
-        }
-
-        .contact a {
-            color: #00aaff;
-            text-decoration: none;
-            font-weight: bold;
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            margin: 0 10px;
             transition: color 0.3s;
         }
 
-        .contact a:hover {
-            color: #ff00ff;
-            text-decoration: underline;
+        .social-links a:hover {
+            color: var(--accent-color);
         }
 
-        /* Footer Note */
-        .final-note {
-            font-size: 1.1rem;
-            padding: 20px;
-            opacity: 0.9;
+        /* --- Main Content Container --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
-        /* 3D Welcome Message */
-        .welcome-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* --- Project Grid --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* --- Project Cards --- */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             height: 100%;
-            background: #121212;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+            border-color: var(--accent-color);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 999;
-            transition: opacity 1s ease-in-out;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
         }
 
-        .welcome-message {
-            font-size: 3.5rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0px 0px 20px rgba(106, 17, 203, 0.7);
-            opacity: 1;
-            animation: float 2s infinite alternate ease-in-out;
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
         }
 
-        @keyframes float {
-            from { transform: translateY(0px); }
-            to { transform: translateY(12px); }
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
         }
 
-        .content {
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: opacity 0.3s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn i {
+            margin-left: 8px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #020617;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 4rem;
+        }
+
+        .contact-box {
+            background: rgba(255,255,255,0.03);
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-box a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-note {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* --- Animation --- */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Full-Screen Welcome Message -->
-    <div class="welcome-screen" id="welcomeScreen">
-        <div class="welcome-message">✨ Welcome to A.S World! ✨</div>
-    </div>
 
-    <!-- Main Content -->
-    <div class="content" id="mainContent">
-        <h1>A.S</h1>
-
-        <!-- About Section -->
-        <div class="section">
-            <p>
-                A.S represents the software of Aryan Sharma. Aryan Sharma is a web designer as well as a web developer. 
-                He wants to create software for those who can't pay. His motive is to provide free software to everyone.
-            </p>
-        </div>
-
-        <!-- Our Websites Section -->
-        <div class="section">
-            <h2>Our Websites</h2>
-
-            <div class="section">
-                <p><strong>Etho</strong> - Free AI software</p>
-                <a class="btn" href="https://aryansharma1171.github.io/Etho-by-A.S/" target="_blank">Visit Etho</a>
-            </div>
-
-            <div class="section">
-                <p><strong>Equation Solver</strong> - Solve mathematical equations instantly</p>
-                <a class="btn" href="https://aryansharma1171.github.io/equation-solver/" target="_blank">Visit Equation Solver</a>
-            </div>
-
-            <div class="section">
-                <p><strong>Text to PDF</strong> - Convert text to PDF easily</p>
-                <a class="btn" href="https://aryansharma1171.github.io/Text-to-pdf-by-a.s/" target="_blank">Visit Text to PDF</a>
-            </div>
-
-            <div class="section">
-                <p><strong>A.S Chat World</strong> - A chat software by A.S</p>
-                <a class="btn" href="https://aryansharma1171.github.io/as-chat/" target="_blank">Visit A.S Chat World</a>
-            </div>
-
-            <div class="section">
-                <p><strong>A.S Code Editor</strong> - Online code editor</p>
-                <a class="btn" href="https://aryansharma1171.github.io/a.s-code-editor/" target="_blank">Visit A.S Code Editor</a>
-            </div>
-
-            <div class="section">
-                <p><strong>A.S List Maker</strong> - Create and manage lists easily</p>
-                <a class="btn" href="https://aryansharma1171.github.io/as-list-maker/" target="_blank">Visit A.S List Maker</a>
-            </div>
-
-            <div class="section">
-                <p><strong>Text to QR</strong> - Convert text to QR codes easily</p>
-                <a class="btn" href="https://aryansharma1171.github.io/Text-to-QR-/" target="_blank">Visit Text to QR</a>
-            </div>
-
-            <!-- ✅ NEW: A.S Q.R Scanner Section -->
-            <div class="section">
-                <p><strong>A.S Q.R Scanner</strong> - Scan QR codes directly from your browser</p>
-                <a class="btn" href="https://aryansharma1171.github.io/A.S-Q.R-Scanner/" target="_blank">Visit A.S Q.R Scanner</a>
-            </div>
-
-            <!-- ✅ NEW: A.S File Manager Section -->
-            <div class="section">
-                <p><strong>A.S File Manager</strong> - Manage your files online easily</p>
-                <a class="btn" href="https://aryansharma1171.github.io/etho-file-manager/" target="_blank">Visit A.S File Manager</a>
-            </div>
-        </div>
-
-        <!-- Contact Section -->
-        <div class="contact">
-            <p>📧 Contact Us: <a href="mailto:aryansharma98g@gmail.com">aryansharma98g@gmail.com</a></p>
-        </div>
-
-        <!-- Final Note -->
-        <p class="final-note">
-            If you want any software, you can contact us at the given email. In the future, many more websites will be added by us. 
-            Thanks for visiting our website!
+    <header class="fade-in">
+        <div class="brand-badge">A.S PORTFOLIO</div>
+        <h1>Software for Everyone.</h1>
+        <p class="subtitle">
+            I am <strong>Aryan Sharma</strong>, a web developer passionate about creating free, accessible software. 
+            My goal is to empower users with tools they don't have to pay for.
         </p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="mailto:aryansharma98g@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </header>
+
+    <div class="container fade-in">
+        
+        <div class="section-title">
+            <i class="fas fa-code"></i> &nbsp; My Applications
+        </div>
+
+        <div class="grid">
+            
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Etho</h3>
+                    <p>Advanced Free AI software designed to assist with various tasks intelligently.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/Etho-by-A.S/" target="_blank" class="btn">
+                    Launch App <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-calculator"></i></div>
+                    <h3>Equation Solver</h3>
+                    <p>Solve complex mathematical equations instantly with this web tool.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/equation-solver/" target="_blank" class="btn">
+                    Solve Math <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-file-pdf"></i></div>
+                    <h3>Text to PDF</h3>
+                    <p>A simple utility to convert plain text into downloadable PDF documents.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/Text-to-pdf-by-a.s/" target="_blank" class="btn">
+                    Convert Now <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-comments"></i></div>
+                    <h3>A.S Chat World</h3>
+                    <p>Connect with others using this custom-built chat software solution.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/as-chat/" target="_blank" class="btn">
+                    Start Chatting <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>A.S Code Editor</h3>
+                    <p>Write, edit, and test code directly in your browser with this online IDE.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/a.s-code-editor/" target="_blank" class="btn">
+                    Write Code <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-qrcode"></i></div>
+                    <h3>A.S QR Scanner</h3>
+                    <p>Scan QR codes directly from your browser using your device camera.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/A.S-Q.R-Scanner/" target="_blank" class="btn">
+                    Scan QR <i class="fas fa-camera"></i>
+                </a>
+            </div>
+
+             <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-folder-open"></i></div>
+                    <h3>A.S File Manager</h3>
+                    <p>Manage your local files effectively with this web-based file explorer.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/etho-file-manager/" target="_blank" class="btn">
+                    Manage Files <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-list-check"></i></div>
+                    <h3>A.S List Maker</h3>
+                    <p>Create to-do lists and organize your tasks effortlessly.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/as-list-maker/" target="_blank" class="btn">
+                    Create List <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-icon"><i class="fas fa-barcode"></i></div>
+                    <h3>Text to QR</h3>
+                    <p>Generate QR codes from text instantly.</p>
+                </div>
+                <a href="https://aryansharma1171.github.io/Text-to-QR-/" target="_blank" class="btn">
+                    Generate QR <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
     </div>
 
-    <script>
-        // Show welcome, then reveal content
-        setTimeout(function() {
-            document.getElementById("welcomeScreen").style.opacity = "0";
-            setTimeout(function() {
-                document.getElementById("welcomeScreen").style.display = "none";
-                document.getElementById("mainContent").style.opacity = "1";
-            }, 1000);
-        }, 2000);
-    </script>
+    <footer>
+        <div class="contact-box">
+            Have a request? <a href="mailto:aryansharma98g@gmail.com">aryansharma98g@gmail.com</a>
+        </div>
+        <p class="footer-note">
+            © 2025 A.S Software. Built by Aryan Sharma. <br>
+            More free tools coming soon. Thanks for visiting.
+        </p>
+    </footer>
+
 </body>
 </html>
